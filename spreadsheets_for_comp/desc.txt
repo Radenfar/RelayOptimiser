@@ -1,0 +1,10 @@
+MAIN:
+- Contains the checklist and ideal relays planned as best as possible from home
+
+
+ALL_SWIMMERS:
+- Contains the raw data of times for all swimmers
+
+
+TOP_10_FREE/BREAST/BACK/FLY:
+- Contains the top 10 for each stroke for both men and women

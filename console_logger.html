@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Console Output Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 1rem;
+            font-family: monospace;
+        }
+
+        #consoleBox {
+            width: 100%;
+            height: 90vh;
+            /* fixed height */
+            overflow-y: scroll;
+            /* ← make it scrollable */
+            background-color: #111;
+            color: #0f0;
+            padding: 1rem;
+            white-space: pre-wrap;
+            border: 1px solid #444;
+            box-sizing: border-box;
+            /* so padding is included in the height */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="consoleBox"></div>
+
+    <script>
+        (function () {
+            const consoleBox = document.getElementById('consoleBox');
+            const originalLog = console.log;
+
+            console.log = function (...args) {
+                originalLog.apply(console, args);
+                const message = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
+                consoleBox.textContent += message + '\n';
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            };
+        })();
+    </script>
+
+    <script src="optimal_relays.js"></script>
+</body>
+
+</html>
